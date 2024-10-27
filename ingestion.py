@@ -11,7 +11,7 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 def ingest_docs():
     loader = ReadTheDocsLoader(
-        path="C:/Users/Chris/Desktop/Projects/documentation-helper/langchain-docs/api.python.langchain.com/en/latest",
+        path="./langchain-docs/api.python.langchain.com/en/latest",
         encoding="ISO-8859-1"
     )    
     raw_documents = loader.load()
@@ -26,7 +26,7 @@ def ingest_docs():
     
     print(f"Adding {len(documents)} documents to Pinecone")
     PineconeVectorStore.from_documents(
-        documents, embeddings, index_name="langchain-doc-index"
+        documents, embeddings, index_name="langchain-documentation-index"
     )
     print("****Loading to vectorstore done ***")
 
